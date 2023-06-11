@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap');
+
+
+/*layout*/
+:root {
+  --primary: #1aac83;
+  --error:#e7195a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f1f1f1;
+  font-family: "poppins";
+}
+
+header{
+  background: #ffffff;
+}
+
+header .container{
+  max-width: 1400px;
+  padding: 10px 20px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+header a{
+  color: #333;
+  padding: 20px;
+  text-decoration: none;
+ 
+}
+
+.pages{
+  max-width: 1400px;
+  padding: 30px;
+  margin: 0 auto;
+}
+.home{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+
+}
+
+.workout-details{
+  background: #fff;
+  border-radius: 4px;
+  margin: 20px auto;
+  padding: 10px;
+  position: relative;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+
+}
+
+.workout-details h3{
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: var(--primary);
+}
+.workout-details p{
+  margin: 0;
+  font-size: 0.9em;
+  color: #555;
+  }
+
+  .workout-details span{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background: #f1f1f1;
+    padding:3px 6px;
+    color: black;
+    border:2px solid red;
+    transition: ease-in-out 0.5s;
+    border-radius: 10%;
+  }
+
+  .workout-details span:hover{
+    background: rgba(255, 0, 0,0.3);
+    border-radius: 30%;
+    
+  }
+
+
+  /*New Workout Form*/
+  input{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+  }
+
+  input.error{
+    border: 1px solid var(--error)
+  }
+
+  form button{
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-family: "poppins";
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  div.error{
+    padding: 10px;
+    background-color: #ffefef;
+    color: var(--error);
+    border-radius: 4px;
+    margin: 20px 0;
+
+  }
+
+
+  /* navbar*/
+  nav{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  nav button{
+    border: 2px solid  var(--primary);
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    color: var(--primary);
+    margin-left: 20px;
+
+  }
+
+  nav a{
+    margin-left: 10px;
+  }
+
+  /*auth forms*/
+  form.signup, form.login{
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+
+
+
+
+
+
+
