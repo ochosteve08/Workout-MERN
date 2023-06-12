@@ -58,7 +58,8 @@ const getWorkout = async (req, res) => {
 //get all workouts
 const getAllWorkout = async (req, res) => {
   try {
-    const workouts = await workoutServices.fetchAllWorkout();
+     const user_id = req.user._id;
+    const workouts = await workoutServices.fetchAllWorkout({ user_id });
     res.status(200).json(workouts);
   } catch (error) {
     res.status(400).json({ error: error.message });

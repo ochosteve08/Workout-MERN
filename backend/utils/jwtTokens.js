@@ -12,7 +12,7 @@ const createToken = async ( userId) =>
     _id: userId,
     issuer: "myapp",
     audience: "myapp",
-    expiresIn: "10h",
+    expiresIn: "100h",
   }, jwtSecret);
 
 const verifyToken = async (token) => await jwt.verify(token, jwtSecret);
