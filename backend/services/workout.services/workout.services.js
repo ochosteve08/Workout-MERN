@@ -3,7 +3,8 @@ const {workoutModel} = require('../../model');
 const addWorkout = async ({ title, load, repetition, user_id }) => {
   return await workoutModel.create({ title, load, repetition, user_id });
 };
-const fetchAllWorkout = async () => await workoutModel.find().sort({createdAt: -1});
+const fetchAllWorkout = async ({ user_id }) =>
+  await workoutModel.find({ user_id }).sort({ createdAt: -1 });
 const fetchWorkout = async ({ id }) => await workoutModel.findOne({ _id: id });
 const removeWorkout = async ({ id }) =>
   await workoutModel.findByIdAndDelete({ _id: id });

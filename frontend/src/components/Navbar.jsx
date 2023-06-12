@@ -12,8 +12,6 @@ const Navbar = () => {
   const handleSubmit = () => {
     logout();
    
-
-
   }
 
   const  capitalizeFirstLetter = (string)=> {

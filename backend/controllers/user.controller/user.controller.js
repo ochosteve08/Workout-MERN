@@ -10,7 +10,7 @@ const registerUser = async (req, res) => {
     //validator
      if (!name || !email || !password) {
        throw Error("all fields must be filled");
-     }
+     } 
   
     if(!validator.isEmail(email)){
     throw Error("Please enter a valid email")
@@ -32,6 +32,9 @@ const registerUser = async (req, res) => {
 const userLogin = async (req, res) => {
       try {
     const { email,password } = req.body;
+     if ( !email || !password) {
+       throw Error("all fields must be filled");
+     } 
     // login a user
     const user = await UserService.login({ email, password });
      const { _id } = user;
