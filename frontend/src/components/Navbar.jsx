@@ -7,13 +7,19 @@ const Navbar = () => {
 
   const {logout} = useLogout();
   const {user} = useAuthContext();
-  console.log(user);
+
 
   const handleSubmit = () => {
     logout();
    
 
+
   }
+
+  const  capitalizeFirstLetter = (string)=> {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <header>
       <div className="container">
@@ -24,8 +30,12 @@ const Navbar = () => {
         <nav>
           {user && (
             <div>
-              <span>{user.email}
-                {/* Welcome <strong>{user.name.split(" ")[0]}</strong>{" "} */}
+              <span>
+                Welcome <strong>
+                  {user.user.name
+                    ? capitalizeFirstLetter(user.user.name.split(" ")[0])
+                    : user.user.email}
+                </strong>
               </span>
               <button onClick={handleSubmit}>LOGOUT</button>
             </div>

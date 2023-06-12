@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWorkoutContext } from "../Hooks/useWorkoutContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
+import { toast } from "react-toastify";
 
 const WorkoutForm = () => {
   const { dispatch } = useWorkoutContext();
@@ -8,15 +9,14 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [repetition, setRepetition] = useState("");
-  const [error, setError] = useState("");
- const [emptyField, setEmptyField] = useState([]);
+  const [emptyField, setEmptyField] = useState([]);
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!user){
-      setError("you must be logged in");
+      toast.error("you must be logged in");
       return;
     }
 
@@ -33,9 +33,8 @@ const WorkoutForm = () => {
 
     const json = await response.json();
     if (!response.ok) {
-      setError(json.error);
       setEmptyField(json.emptyField);
-
+      toast.error(json.error);
       }
     if (response.ok) {
       dispatch({
@@ -45,10 +44,12 @@ const WorkoutForm = () => {
       setTitle("");
       setLoad("");
       setRepetition("");
-      console.log(json);
+       toast.success("new workout added");
+    
 
     }
   };
+ 
 
   return (
     <form className="create" onSubmit={handleSubmit}>
@@ -59,7 +60,7 @@ const WorkoutForm = () => {
         name="title"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
-        // className={emptyField.includes("title") ? "error" : ""}
+        className={emptyField.includes("title") ? "error" : ""}
       />
 
       <label htmlFor="load">Load (in Kg):</label>
@@ -68,7 +69,7 @@ const WorkoutForm = () => {
         name="load"
         value={load}
         onChange={(event) => setLoad(event.target.value)}
-        // className={emptyField.includes("load") ? "error" : ""}
+        className={emptyField.includes("load") ? "error" : ""}
       />
 
       <label htmlFor="repetition">Repetition:</label>
@@ -77,10 +78,10 @@ const WorkoutForm = () => {
         name="repetition"
         value={repetition}
         onChange={(event) => setRepetition(event.target.value)}
-        // className={emptyField.includes("repetition") ? "error" : ""}
+        className={emptyField.includes("repetition") ? "error" : ""}
       />
       <button type="submit">Add Workout</button>
-      <div className="error">{error}</div>
+    
     </form>
   );
 };

@@ -2,6 +2,8 @@
 
 import { useWorkoutContext } from "../Hooks/useWorkoutContext";
 import { useAuthContext } from "../Hooks/useAuthContext";
+import formatDistanceToNow from "date-fns/formatDistanceToNow"
+import { toast } from "react-toastify";
 
 const WorkoutDetail = ({workout}) => {
 
@@ -9,9 +11,9 @@ const WorkoutDetail = ({workout}) => {
     const {user} = useAuthContext();
     const {_id: id} = workout;
     const { title, load, repetition, createdAt } = workout;
-    const dateAndTime = new Date(createdAt);
-    const date = dateAndTime.toDateString();
-    const time = dateAndTime.toLocaleTimeString();
+    // const dateAndTime = new Date(createdAt);
+    // const date = dateAndTime.toDateString();
+    // const time = dateAndTime.toLocaleTimeString();
 
     const handleDelete = async () => {
       console.log(user)
@@ -35,6 +37,7 @@ const WorkoutDetail = ({workout}) => {
             type: "DELETE_WORKOUT",
             payload: json,
           });
+          toast.success("workout deleted");
           console.log("item is deleted successfully");
         }
       }
@@ -53,9 +56,7 @@ const WorkoutDetail = ({workout}) => {
         <strong>Repetition: </strong>
         {repetition}
       </p>
-      <p>
-        {date} {time}
-      </p>
+      <p>{formatDistanceToNow(new Date(createdAt), {addSuffix: true})}</p>
       <span onClick={handleDelete}>Delete</span>
     </div>
   );

@@ -7,13 +7,13 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {signup, error, loading} = useSignup();
+  const {signup, loading} = useSignup();
   
 
   const handleSubmit = async(event)=>{
         event.preventDefault();
         await signup(name,email, password);
-        console.log(error)
+      
    
     }
 
@@ -48,7 +48,7 @@ const Signup = () => {
       <button type="submit" disabled={loading}>
         REGISTER
       </button>
-      {error && <div className="error">{error}</div>}
+     
     </form>
   );
 }

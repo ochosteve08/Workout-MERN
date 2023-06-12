@@ -3,7 +3,7 @@ import useLogin from "../Hooks/useLogin";
 
 const Login = () => {
 
-  const { signin, error, loading} = useLogin();
+  const { signin, loading} = useLogin();
    const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -37,7 +37,7 @@ const Login = () => {
         placeholder="password"
       />
       <button disabled={loading} type="submit"> LOGIN </button>
-     {error && <div className="error">{error}</div>}
+    
     </form>
   );
 };

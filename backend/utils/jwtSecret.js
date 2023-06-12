@@ -2,16 +2,13 @@ const crypto = require("crypto");
 const dotenv = require("dotenv");
 dotenv.config();
 
-
 const generateJwtSecret = () => {
   // Generate a random 32-byte (256-bit) string
   const secret = crypto.randomBytes(32).toString("hex");
- 
   return secret;
 };
+  const jwtSecret = generateJwtSecret();
 
-const jwtSecret = generateJwtSecret();
-// console.log("secret generated:",jwtSecret);
 
 module.exports = {
   generateJwtSecret,
